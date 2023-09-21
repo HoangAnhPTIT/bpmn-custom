@@ -1,0 +1,42 @@
+{
+  "name": "sale",
+  "prefix": "sale",
+  "uri": "http://sale",
+  "xml": {
+    "tagAlias": "lowerCase"
+  },
+  "associations": [],
+  "types": [
+    {
+      "name": "BewitchedStartEvent",
+      "extends": [
+        "bpmn:StartEvent"
+      ],
+      "properties": [
+        {
+          "name": "spelllll",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "OB",
+      "extends": [
+        "bpmn:Task"
+      ],
+      "properties": [
+        {
+          "name": "object_type",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "property",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    }
+  ]
+}
