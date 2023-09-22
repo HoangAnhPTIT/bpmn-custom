@@ -5,12 +5,12 @@ import Properties from './properties';
 export default function (element) {
 
   return [
-    {
-      id: 'object',
-      element,
-      component: ObjectType,
-      isEdited: isTextFieldEntryEdited
-    },
+    // {
+    //   id: 'object',
+    //   element,
+    //   component: ObjectType,
+    //   isEdited: isTextFieldEntryEdited
+    // },
     {
       id: 'properties',
       element,

@@ -27,12 +27,12 @@
       ],
       "properties": [
         {
-          "name": "object_type",
+          "name": "property",
           "isAttr": true,
           "type": "String"
         },
         {
-          "name": "property",
+          "name": "classify",
           "isAttr": true,
           "type": "String"
         }

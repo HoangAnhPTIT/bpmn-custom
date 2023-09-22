@@ -1,50 +1,24 @@
 import { html } from 'htm/preact';
 
-import { SelectEntry } from '@bpmn-io/properties-panel';
+import {TaskListenerProps, ListGroup} from '@bpmn-io/properties-panel';
 import { useService } from 'bpmn-js-properties-panel';
 
 
-export default function Properties(props) {
-  const { element, id } = props;
-
-  const modeling = useService('modeling');
+export default function TaskListenerGroup(element, id) {
+  const injector = useService('injector');
   const translate = useService('translate');
-  const debounce = useService('debounceInput');
+  const group = {
 
-  const getValue = () => {
-    return element.businessObject.object_type || '';
+    label: translate('Task listeners'),
+    id: 'CamundaPlatform__TaskListener',
+    component: ListGroup,
+    ...TaskListenerProps({
+      element,
+      injector
+    })
+  };
+  if (group.items) {
+    return group;
   }
-
-  const setValue = value => {
-    return modeling.updateProperties(element, {
-      object_type: value
-    });
-  }
-
-  const getOptions = () => {
-    const options = [
-      {
-        "value": "LEAD",
-        "label": "Lead"
-      },
-      {
-        "value": "OPPORTUNITY",
-        "label": "Opportunity"
-      }
-    ]
-
-    return options
-  }
-
-  return html`<div>
-    <${SelectEntry}
-    element=${element}
-    description=${translate('Chọn thuộc tính')}
-    label=${translate('Thuộc tính')}
-    getValue=${getValue}
-    setValue=${setValue}
-    debounce=${debounce}
-    getOptions=${getOptions}
-  />
-  </div>`
+  return null;
 }

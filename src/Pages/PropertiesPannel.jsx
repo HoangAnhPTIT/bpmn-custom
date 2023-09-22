@@ -9,7 +9,7 @@ import "bpmn-js-properties-panel/dist/assets/properties-panel.css";
 import {
   BpmnPropertiesPanelModule,
   BpmnPropertiesProviderModule,
-  CamundaPlatformPropertiesProviderModule
+  // CamundaPlatformPropertiesProviderModule
 } from 'bpmn-js-properties-panel';
 // use Camunda BPMN Moddle extension
 // import CamundaExtensionModule from 'camunda-bpmn-moddle';
@@ -21,7 +21,7 @@ import camundaModdle from 'camunda-bpmn-moddle/resources/camunda.json';
 import magicModdleDescriptor from '../descriptors/magic.json'
 
 import { emptyBpmn } from '../assets/empty.bpmn';
-import newPropertiesProvider from '../provider/objectType/index';
+import CustomeProvider from './CustomProvider';
 
 export default function PropertiesPannel() {
   const modeler = useRef()
@@ -37,13 +37,13 @@ export default function PropertiesPannel() {
       additionalModules: [
         BpmnPropertiesPanelModule,
         BpmnPropertiesProviderModule,
-        // newPropertiesProvider
-        CamundaPlatformPropertiesProviderModule,
+        CustomeProvider
+        // CamundaPlatformPropertiesProviderModule,
         // CamundaExtensionModule
       ],
       moddleExtensions: {
-        // sale: magicModdleDescriptor
-        camunda: camundaModdle
+        property: magicModdleDescriptor
+        // camunda: camundaModdle
       }
     });
 
