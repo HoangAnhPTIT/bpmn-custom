@@ -1,5 +1,7 @@
 import { TextFieldEntry, isTextFieldEntryEdited } from '@bpmn-io/properties-panel';
 import { useService } from 'bpmn-js-properties-panel';
+import * as ModelUtil from 'bpmn-js/lib/util/ModelUtil'
+import * as minDash from 'min-dash'
 
 export default function (element) {
 
@@ -22,7 +24,6 @@ export function PropertiesProp(props) {
   const debounce = useService('debounceInput');
 
   const getValue = () => {
-    console.log('element.businessObject', element.businessObject)
     const { property } = element.businessObject
     if (!property) return ''
 
@@ -32,21 +33,22 @@ export function PropertiesProp(props) {
 
   const aaa = (value) => {
     const clone = element.businessObject.property
-    if(!clone) return {
+    if (!clone) return {
       property: JSON.stringify({
         [`${id}`]: value
       })
     }
 
-    clone[`${id}`] = value
+    const JSONclone = JSON.parse(clone)
+    JSONclone[`${id}`] = value
 
     return {
-      property: JSON.stringify(clone)
+      property: JSON.stringify(JSONclone)
     }
   }
   const setValue = value => {
     console.log('setvalue', value)
-    return modeling.updateProperties(element, aaa());
+    return modeling.updateProperties(element, aaa(value));
   }
 
   return TextFieldEntry(

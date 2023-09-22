@@ -5,9 +5,18 @@ export const emptyBpmn = `<?xml version="1.0" encoding="UTF-8"?>
 	xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
 	xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
 	xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+	xmlns:camunda="http://camunda.org/schema/1.0/bpmn"
 	xmlns:sale="http://sale"
 	xmlns:magic="http://magic" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
 	<bpmn2:process id="Process_1" isExecutable="false">
+		<bpmn2:extensionElements>
+			<camunda:properties>
+				<camunda:property name="SDT" value="ww" />
+				<camunda:property name="Mã booking" value="123123" />
+				<camunda:property name="Tên lead" value="sssss" />
+				<camunda:property name="Mã order" value="123" />
+			</camunda:properties>
+		</bpmn2:extensionElements>
 		<bpmn2:startEvent id="StartEvent_1">
 			<bpmn2:outgoing>Flow_0uxkrd1</bpmn2:outgoing>
 		</bpmn2:startEvent>
@@ -20,7 +29,18 @@ export const emptyBpmn = `<?xml version="1.0" encoding="UTF-8"?>
 		</bpmn2:exclusiveGateway>
 		<bpmn2:sequenceFlow id="Flow_0uxkrd1" sourceRef="StartEvent_1" targetRef="Gateway_1galida" />
 		<bpmn2:sequenceFlow id="Flow_1dyb03r" sourceRef="Gateway_1galida" targetRef="Activity_0qkd7yj" />
-		<bpmn2:task id="Activity_0qkd7yj" name="123" sale:object_type="LEAD" lead_name="123" SDT="234" booking_code="345456" order_code="456456">
+		<bpmn2:task id="Activity_0qkd7yj" name="123">
+			<bpmn2:extensionElements>
+				<camunda:properties>
+					<camunda:property name="SDT" value="mm" />
+				</camunda:properties>
+				<camunda:inputOutput>
+					<camunda:inputParameter name="234">
+						<camunda:map />
+					</camunda:inputParameter>
+					<camunda:inputParameter name="33" />
+				</camunda:inputOutput>
+			</bpmn2:extensionElements>
 			<bpmn2:incoming>Flow_1dyb03r</bpmn2:incoming>
 			<bpmn2:outgoing>Flow_1wkapax</bpmn2:outgoing>
 		</bpmn2:task>
